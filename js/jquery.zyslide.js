@@ -4,7 +4,7 @@
 	//本函数每次调用只负责一个轮播图的功能，也就是说，只会产生一个轮播图，这个函数的作用域只能分配
 	//一个轮播图，所以要求在调用本函数的时候务必把当前轮播图的根标签传递过来，
 	//这里的形参 ele 就是某个轮播图的根标签
-	var slide = function(ele){
+	var slide = function(ele, options){
 		//转化为 jquery 标签对象
 		var $ele = $(ele);
 		//默认设置选项
@@ -14,6 +14,8 @@
 			//控制 interval 的时间（轮播速度）
 			speed: 2000
 		};
+		//对象合并
+		$.extend(true, setting, options);
 		//先规定好每张图片处于的位置和状态
 		var states = [
 						{ZIndex: 1, width: 120, height: 150, top: 69, left: 134, ZOpacity: 0.2},
@@ -84,9 +86,9 @@
 	}
 	//找到要轮播的轮播图的根标签, 调用 slide 方法
 	//插件类写法
-	$.fn.zySlide = function(){
+	$.fn.zySlide = function(options){
 		$(this).each(function(i, ele){
-			slide(ele);
+			slide(ele, options);
 		});
 	}
 })(jQuery)
