@@ -51,4 +51,18 @@ $('#box .prev').click(function(){
 	prev();
 });
 
-setInterval(next, 1500);
+//自动轮播
+var interval = null;
+function autoPlay(){
+	interval = setInterval(function(){
+		next();
+	}, 1500);
+}
+autoPlay();
+
+//停止轮播
+$('#box li').add('#box section').hover(function(){
+	clearInterval(interval);
+},function(){
+	autoPlay();
+});
