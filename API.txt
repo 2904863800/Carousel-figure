@@ -1,0 +1,38 @@
+详细API
+本插件用于实现图片的轮播效果，具体用法如下：
+
+首先，本插件是基于jquery编写而成，各位伸手党们请注意了，在引入插件 jquery.zyslide.js 文件之前必须先引入
+jquery 库，并且确认引入 jquery.zyslide.css 样式表。
+例如：
+<link rel="stylesheet" type="text/css" href="css/jquery.zyslide.css"/>
+<script src="libs/jquery.js"></script>
+<script src="js/jquery.zyslide.js"></script>
+（以上示例仅供参考，请确保引入路径无误）
+
+其次，请按照以下结构在 html 中构建轮播图：
+<div class="slide zy-slide">
+	<section class="zy-prev">前一张</section>
+	<section class="zy-next">后一张</section>
+	<ul>
+		<li><img src="images/1.jpg" alt="轮播图片" /></li>
+		<li><img src="images/2.jpg" alt="轮播图片" /></li>
+		<li><img src="images/3.jpg" alt="轮播图片" /></li>
+		<li><img src="images/4.jpg" alt="轮播图片" /></li>
+		<li><img src="images/5.jpg" alt="轮播图片" /></li>
+		<li><img src="images/6.jpg" alt="轮播图片" /></li>
+		<li><img src="images/7.jpg" alt="轮播图片" /></li>
+	</ul>
+</div>
+以上结构中，只有最外层的 div 标签可用其他 块元素标签替代，如section等，
+只需保证 class 属性包含 zy-slide 即可，其他标签请按示例填写，
+请确认 section 标签包含 zy-prev、zy-next。
+请确认 ul 中包含 7个 li，每个 li 中包含 1 个 img，src 更换成你的图片路径。
+
+最后，请在 js 中按照以下示例进行调用：
+$('.slide').zySlide({delay:1000, speed:1000});
+其中 $('.slide') 用任何选择器替换都行，只要是使用轮播图的根标签来调用
+.zySlide() 是插件入口，调用该方法开启轮播
+参数列表{delay:1000, speed:1000} 其中 delay 表示轮播图从中心展开的时间，
+speed 表示轮播速度，请保证两个参数的值 >=1000，以免插件崩溃。
+
+本插件已优化链式调用，各位客官可尽情链调。
